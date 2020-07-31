@@ -4,6 +4,7 @@ import 'package:coolkicks/providers/user-provider.dart';
 import 'package:coolkicks/screens/authenticate.dart';
 
 import 'package:coolkicks/services/connectivity_service.dart';
+import 'package:coolkicks/services/theme.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:provider/provider.dart';
@@ -20,6 +21,7 @@ void main() {
     MultiProvider(providers: [
       ChangeNotifierProvider(create: (context) => ProductProvider(),),
       ChangeNotifierProvider(create: (context)=> UserProvider()),
+      ChangeNotifierProvider(create: (context)=> ThemeProvider(false)),
       StreamProvider<ConnectivityStatus>(
      create: (_) => ConnectivityService().connectionStatusController.stream)
 
@@ -34,16 +36,11 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
    
-    return 
-    MaterialApp(
+    return Consumer<ThemeProvider>(builder: (context, theme, child){
+      return  MaterialApp(
       debugShowCheckedModeBanner: false,
       title: 'Flutter Demo',
-      theme: ThemeData(
-        
-        primarySwatch: Colors.blue,
-       
-        visualDensity: VisualDensity.adaptivePlatformDensity,
-      ),
+      theme: theme.getTheme(),
       home: Authenticate(),
       // routes: {
       //   '/' : (BuildContext context) => Authenticate(),
@@ -54,6 +51,8 @@ class MyApp extends StatelessWidget {
       //   '/signup' : (BuildContext context) => SignUp(),
       // },
     );
+    },);
+   
   }
 }
 

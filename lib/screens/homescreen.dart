@@ -266,11 +266,13 @@ class _HomeScreenState extends State<HomeScreen> {
 
     return Scaffold(
         key: _scaffoldKey,
-        backgroundColor: Colors.grey[100],
+       
         bottomNavigationBar: CurvedNavigationBar(
+          color: Colors.deepPurple,
+          buttonBackgroundColor: Colors.transparent,
           index: _currentIndex,
           onTap: onTabTapped,
-          backgroundColor: Colors.grey[100],
+          backgroundColor: Colors.transparent,
           height: 50,
           animationDuration: Duration(milliseconds: 300),
           items: <Widget>[

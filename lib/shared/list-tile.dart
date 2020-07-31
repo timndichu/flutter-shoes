@@ -18,8 +18,11 @@ class ShoeTile extends StatelessWidget {
           trailing: Text('Ksh. ${shoe.price.toString()}'),
           leading: CircleAvatar(
             radius: 25.0,
-            backgroundImage : AssetImage('assets/nike.png')
-          ),
+            child: Image.network(
+            
+  'https://static.nike.com/a/images/t_default/yg04crbgf1kstp6ykpa4/air-max-1-g-golf-shoe-kT60Fh.jpg',
+),
+         ),
           title: Text('${shoe.title}'),
           subtitle: Text('${shoe.description}'),
           onTap: () async {
